@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+	Getting Stated
+{% endblock %}
+
+{% block content %}
+    <h1>Todo Application</h1>
+    <p>Get the satisfaction of getting your tasks done</p>
+    <p>Log in <a href="{% url 'accounts:login' %}">here</a></p>
+    <p>Change your Password <a href="{% url 'accounts:passwordChange' %}">here</a></p>
+    <form action="{% url 'accounts:logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+    </form>
+{% endblock %}
