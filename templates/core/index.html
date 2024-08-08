@@ -6,9 +6,11 @@
 
 {% block content %}
     <h1>Todo Application</h1>
+    <h3>Hello {{ request.user.username }}</h3>
     <p>Get the satisfaction of getting your tasks done</p>
     <p>Log in <a href="{% url 'accounts:login' %}">here</a></p>
     <p>Change your Password <a href="{% url 'accounts:passwordChange' %}">here</a></p>
+    <p>Register <a href="{% url 'accounts:sign_up' %}">here</a></p>
     <form action="{% url 'accounts:logout' %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Logout">
