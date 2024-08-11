@@ -9,6 +9,7 @@
     <form action="{% url 'accounts:sign_up' %}" method="post">
         {% csrf_token %}
         {{ user_form.as_p }}
+        <p>Already a user? <a href="{% url 'accounts:login' %}">Login here</a></p>
         <input type="submit" value="Sign-up">
     </form>
 {% endblock %}

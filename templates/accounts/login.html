@@ -1,15 +1,46 @@
-{% extends "core/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Log-in</title>
+        <link rel="stylesheet" href="{% static 'css/accounts/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
+    </head>
+    <body>
+        <main id="main-content">
+            <div id="img-wrap">
+            <img src="{% static 'css/assets/images/todoimage.jpg' %}" alt="">
+        </div>
+            <div id="form-wrapper">
+            <form id="form" method="post">
+            <div class="hd-wrap">
+                <div class="wl-wrap">
+                    <img src="{% static 'css/assets/images/wish-list.png'%}" alt="Wish List">
+                </div>
+                <h1>Login</h1>
+            </div>
+            {% csrf_token %}
+            <div class="ur-wrap">
+                <label for="username">Username or Email address</label>
+                {{ form.username }}
+            </div>
+             <div class="pw-wrap">
+                <label for="password">Password</label>
+                {{ form.password }}
+            </div>
+            <input type="submit" value="Login">
+            <div class="signup-wrapper">
+                <p>Get Started <a href="{% url 'accounts:sign_up' %}">Sign-up here</a></p>
+            </div>    
+        </form>
+        </div>
+        </main>
+    </body>
+</html>
 
-{% block title %}
-	Login
-{% endblock %}
 
-{% block content %}
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Login">
-    </form>
-    
-{% endblock %}
+
+
+
+
