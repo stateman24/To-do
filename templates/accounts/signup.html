@@ -1,15 +1,50 @@
-{% extends 'core/base.html' %}
+{% extends 'accounts/auth_base.html' %}
+{% load static %}
 
 {% block title %}
 	Sign-Up
 {% endblock %}
 
 {% block content %}
-	<h1>Sign Up</h1>
-    <form action="{% url 'accounts:sign_up' %}" method="post">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        <p>Already a user? <a href="{% url 'accounts:login' %}">Login here</a></p>
-        <input type="submit" value="Sign-up">
-    </form>
+	<main id="main-content" class="container">
+               <div class="col">
+                    <div id="form-wrapper">
+                        <form id="form" action="{% url 'accounts:sign_up' %}" method="post">
+                            {% csrf_token %}
+                            <div class="hd-wrap">
+                                <div class="wl-wrap">
+                                    <img src="{% static 'css/assets/images/wish-list.png'%}" alt="Wish List">
+                                </div>
+                                <h1>Sign-Up</h1>
+                            </div>
+                            <div class="form-wrap">
+                                <label for="username">Username</label>
+                                {{ user_form.username }}
+                            </div>
+                            <div class="form-wrap">
+                                <label for="first-name">Firstname</label>
+                                {{ user_form.first_name }}
+                            </div>
+                            <div class="form-wrap">
+                                <label for="email-address">Email Address</label>
+                                {{ user_form.email }}
+                            </div>
+                             <div class="form-wrap">
+                                <label for="password">Password</label>
+                                {{ user_form.password1 }}
+                            </div>
+                            <div class="form-wrap">
+                                <label for="password2">Confirm Password</label>
+                                {{ user_form.password2 }}
+                            </div>
+                            <div class="text-center">
+                                <button class="btn" type="submit">Get Started</button>
+                            </div>
+                            <div class="signup-wrapper">
+                                <p>Already a User? <a href="{% url 'accounts:login' %}">Login here</a></p>
+                            </div>    
+                        </form>
+                    </div>
+               </div>
+        </main>
 {% endblock %}
