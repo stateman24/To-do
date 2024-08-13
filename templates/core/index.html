@@ -1,18 +1,41 @@
-{% extends "core/base.html" %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 	Getting Stated
 {% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/core/index.css' %}?{% now 'U' %}">
+{% endblock %}
+
+{% block user %}
+    {{ request.user }}
+{% endblock %}
+
 {% block content %}
-    <h1>Todo Application</h1>
-    <h3>Hello {{ request.user.username }}</h3>
-    <p>Get the satisfaction of getting your tasks done</p>
-    <p>Log in <a href="{% url 'accounts:login' %}">here</a></p>
-    <p>Change your Password <a href="{% url 'accounts:passwordChange' %}">here</a></p>
-    <p>Register <a href="{% url 'accounts:sign_up' %}">here</a></p>
-    <form action="{% url 'accounts:logout' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Logout">
-    </form>
+    <div class="container-fluid w-50 mt-5">
+        <div class="row">
+            <div class="container-fluid">
+                <div class="row">
+                    <form method="post">
+                        <label for="add-task"></label>
+                        {{ form.add_task }}
+                    </form>
+                </div>
+            </div> 
+        </div>
+        <div class="row">
+            <p>Change your Password <a href="{% url 'accounts:passwordChange' %}">here</a></p>
+            <p>Register <a href="{% url 'accounts:sign_up' %}">here</a></p>
+            <form action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+    </div>
+    
+    
+   
+    
 {% endblock %}

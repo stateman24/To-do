@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "Roboto Condensed";
+    src: url("/static/css/assets/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf");
+}
+
+:root{
+
+    /* Colours */
+    --accent-col: #95dbe3;
+    --secondary-col: #1b8eba;
+    --primary-col: #ffffff;
+
+    --ft-wgt-400: 400;
+    --ft-wgt-700: 700;
+
+    --bs-body-font-family: "Roboto Condensed"
+}
+
+
+body{
+    background-color: var(--accent-col);
+}
+
+.custom-navbar{
+    background-color: var(--primary-col);
+    padding: 1rem;
+}
+
+.custom-brand{
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--secondary-col);
+}
+
+.custom-text {
+    color: var(--secondary-col);
+    font-style: italic;
+    font-size: 2rem;
+    font-weight: var(--ft-wgt-400);
+    text-align: center;
+}
+
+.btn-custom{
+    background-color: var(--accent-col);
+    padding: 0.93rem;
+    color: var(--primary-col);
+    font-size: 1rem;
+}
