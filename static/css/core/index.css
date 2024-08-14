@@ -4,6 +4,10 @@
     font-weight: var(--ft-wgt-700);
 }
 
+a{
+    text-decoration-line: none;
+}
+
 p{
     font-style: italic;
     color: var(--secondary-col);
@@ -41,6 +45,11 @@ input[type="text"]::placeholder{
 .task-label{
     font-weight: var(--ft-wgt-400);
     font-size: 1.5rem;
+    color: var(--secondary-col);
+}
+
+.completed{
+    text-decoration-line: line-through;
 }
 
 .inner-circle{
@@ -48,4 +57,29 @@ input[type="text"]::placeholder{
 }
 .active, .inner-circle:hover{
     fill: var(--secondary-col);
+}
+
+.span-text{
+    color: var(--secondary-col);
+    font-weight: var(--ft-wgt-400);
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+.complete-btn{
+    background-color: var(--primary-col);
+    padding: 0.75rem;
+    border: none;
+}
+
+.complete-btn:hover{
+    background-color: var(--primary-col); !important
+}
+
+.complete-btn:active{
+    background-color: var(--primary-col); !important
+}
+
+.animation{
+    transition: 0.3s ease;
 }

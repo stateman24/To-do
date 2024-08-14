@@ -19,7 +19,9 @@
                 <div class="container w-75">
                     <div class="row g-0">
                        <div class="col">
-                           <h1 class="navbar-brand custom-brand">Todo</h1>
+                           <a href="{% url 'core:index' %}">
+                               <h1 class="navbar-brand custom-brand">Todo</h1>
+                           </a>
                        </div>
                        <div class="col">
                            <span class="navbar-text custom-text mx-lg-auto">Hello {% block user %}{% endblock %}</span>
@@ -48,7 +50,7 @@
                 </div>
             </div>
         </nav>
-    <main class="d-flex justify-content-center">
+    <main class="d-flex justify-content-center p-lg-4">
         {% block content %}
         {% endblock %}
     </main>

@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from core.models import Task
-from core.forms import AddTaskForm
 
 
 @login_required
@@ -11,7 +10,8 @@ def index(request):
         new_task = Task(user=request.user, name=task)
         new_task.save()
     tasks = Task.objects.all().filter(user=request.user, status=False)
-    context = {"tasks": tasks}
+    completed_tasks = Task.objects.all().filter(user=request.user, status=True)
+    context = {"tasks": tasks, "completed_tasks": completed_tasks}
     return render(request, "core/index.html", context)
 
 
