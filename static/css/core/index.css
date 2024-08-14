@@ -1,3 +1,51 @@
 .text-custom{
     color: var(--primary-col);
+    font-size: 2.5rem;
+    font-weight: var(--ft-wgt-700);
+}
+
+p{
+    font-style: italic;
+    color: var(--secondary-col);
+    font-size: 1.5rem;
+}
+
+button[type="submit"]{
+    background: none;
+    border: none;
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    border: none;
+    outline: none;
+}
+
+input[type="text"]::placeholder{
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+.task-wrapper{
+    background-color: var(--primary-col);
+    padding: 1.25rem;
+    border-radius: 0.4rem;
+}
+
+.task-wrap{
+    border-bottom: 2px solid var(--secondary-col);
+}
+
+.task-label{
+    font-weight: var(--ft-wgt-400);
+    font-size: 1.5rem;
+}
+
+.inner-circle{
+    transition: fill 0.3s ease;
+}
+.active, .inner-circle:hover{
+    fill: var(--secondary-col);
 }

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-	Getting Stated
+	{{ request.user }}'s List
 {% endblock %}
 
 {% block extra_css %}
@@ -18,24 +18,57 @@
         <div class="row">
             <div class="container-fluid">
                 <div class="row">
-                    <form method="post">
-                        <label for="add-task"></label>
-                        {{ form.add_task }}
+                    <form method="post" class="container">
+                        {% csrf_token %}
+                        <div class="row">
+                            <label for="add-task" class="text text-custom">Add Task</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-11 gy-3">
+                                <input type="text" id="add-task" name="task" placeholder="Enter your task here">
+                            </div>
+                            <div class="col-1 gy-3 gx-0">
+                                <button type="submit"><img src="{% static 'css/assets/images/add_circle.png' %}" alt="Add"></button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div> 
         </div>
-        <div class="row">
-            <p>Change your Password <a href="{% url 'accounts:passwordChange' %}">here</a></p>
-            <p>Register <a href="{% url 'accounts:sign_up' %}">here</a></p>
-            <form action="{% url 'accounts:logout' %}" method="post">
-                {% csrf_token %}
-                <input type="submit" value="Logout">
-            </form>
+        <div class="row px-2 mt-3">
+            <div class="container-fluid p-4-3 task-wrapper">
+                {% if tasks %}
+                	{% for task in tasks %}
+                	<div class="row p-4 mx-4 gy-2 task-wrap">
+                        <div class="col-1">
+                            <a href="{% url 'core:update' task.name %}">
+                                <svg class="radio-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="11" stroke="#1B8EBAFF" stroke-width="2" fill="none"></circle>
+                                    <circle class="inner-circle" cx="12" cy="12" r="6" fill="transparent"></circle>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="col-10">
+                            <label for="task-done" class="task-label">{{ task }}</label>
+                        </div>
+                        <div class="col-1 p-0">
+                            <a href="{% url 'core:delete' task.name %}">
+                                <img src="{% static 'css/assets/images/delete-icon.png' %}" alt="Delete">
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="row">
+                        <p class="text text-center">No pending tasks at the moment</p>
+                    </div>
+                {% endif %} 
+                
+            </div>
         </div>
     </div>
-    
-    
-   
-    
+{% endblock %}
+
+{% block extra_scripts %}
+	<script defer src="{% static 'js/core/index.js' %}"></script>
 {% endblock %}
