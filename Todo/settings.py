@@ -38,9 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third Party app
+    "rest_framework",
+    "guardian",
+
     # Local Apps
     'accounts',
-    'core'
+    'core',
+    "api"
 ]
 
 MIDDLEWARE = [
@@ -53,8 +58,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
     'accounts.authentication.EmailAuthBackend'
 ]
 
